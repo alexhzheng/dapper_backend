@@ -2,7 +2,7 @@
 
 const config = {
   port: process.env.PORT || 3000,
-  expireTime: '7d',
+  expireTime: "7d",
 };
 
 const dbUser = process.env.db_username;
@@ -10,25 +10,25 @@ const dbPassword = process.env.db_username;
 
 // Setting environment variable
 // process.env.NODE_ENV = 'process.env.NODE_ENV' || 'development';
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = "development";
 
 function getEnvironmentConfig() {
   switch (process.env.NODE_ENV) {
-    case 'test':
+    case "test":
       return {
-        dbConnection: 'mongodb://localhost:27017/niftypantone',
-        whitelistDomains: ['http://localhost:3001', 'http://localhost:3002'],
+        dbConnection: "mongodb://localhost:27017/niftypantone",
+        whitelistDomains: ["http://localhost:3001", "http://localhost:3002"],
         port: config.port,
       };
-    case 'development':
+    case "development":
       return {
         // dbConnection: 'mongodb://localhost:27017/niftypantone',
-        dbConnection: `mongodb+srv://${dbUser}:${dbPassword}@dapps.1nzb4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
+        dbConnection: `mongodb+srv://alexhz:dapper69@dapps.1nzb4.mongodb.net/dappers?retryWrites=true&w=majority`,
 
         whitelistDomains: [
-          'http://localhost:3001',
-          'http://localhost:3002',
-          'http://localhost:3000',
+          "http://localhost:3001",
+          "http://localhost:3002",
+          "http://localhost:3000",
         ],
         port: config.port,
       };
@@ -50,7 +50,7 @@ function getEnvironmentConfig() {
     //   };
     default:
       return {
-        error: 'No environment provided',
+        error: "No environment provided",
       };
   }
 }

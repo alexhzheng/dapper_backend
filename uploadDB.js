@@ -1,12 +1,12 @@
 /** @format */
 
-const nbaColors = require('./static/nbaColors.json');
-const mongoose = require('mongoose');
-const config = require('./config/config');
-const ObjectID = require('mongodb').ObjectID;
+const dappers = require("./static/daps.json");
+const mongoose = require("mongoose");
+const config = require("./config/config");
+const ObjectID = require("mongodb").ObjectID;
 
-require('./models/mintedColor');
-const Color = mongoose.model('Color');
+require("./models/mintedDap");
+const Dap = mongoose.model("Dap");
 
 // // sync db
 mongoose
@@ -20,26 +20,30 @@ mongoose
 
 const conn = mongoose.connection;
 
-function formatColor(colorHex) {
-  return parseInt(colorHex, 16);
+function getTokenId(name) {
+  return name.split("").reduce(function (a, b) {
+    a = (a << 5) - a + b.charCodeAt(0);
+    return a & a;
+  }, 0);
 }
 
 async function main() {
-  for (const i in nbaColors) {
-    const hexcode = nbaColors[i];
-    const tokenId = formatColor(hexcode);
+  for (const i in dappers) {
+    const name = dappers[i]["name"];
+    const tokenId = getTokenId(name);
     const doc = {
       _id: new ObjectID(),
-      status: 'available',
-      hexcode: nbaColors[i],
+      status: "available",
+      hexcode: name,
       tokenId: tokenId.toString(),
+      ipfsVideoHash: dappers[i]["ipfsVideoHash"],
       createdDate: new Date(),
       _v: 0,
     };
-    conn.collection('colors').insertOne(doc);
+    conn.collection("daps").insertOne(doc);
 
-    console.log('added');
+    console.log("added");
   }
 }
 main();
-console.log('done');
+console.log("done");
