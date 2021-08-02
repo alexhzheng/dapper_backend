@@ -21,7 +21,7 @@ const transactionConfirmer = async (req, res) => {
   if (!req.body || !req.body.dapTokenIds || !req.body.status) {
     return res.send({ error: 'Invalid request missing parameters' });
   }
-  const colorTokenIds = req.body.dapTokenIds;
+  const dapTokenIds = req.body.dapTokenIds;
   const status = req.body.status;
   const validStatus = status == 'claimed' || status == 'available';
   if (!validStatus) {
