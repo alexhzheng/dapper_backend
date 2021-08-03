@@ -5,7 +5,7 @@ const config = require('../../config/config');
 
 require('../../models/mintedDap');
 
-const Color = mongoose.model('Dap');
+const Dap = mongoose.model('Dap');
 
 // sync db
 mongoose
@@ -21,7 +21,7 @@ const dapBuyer = async (req, res) => {
     return res.send({ error: 'dap not provided' });
   }
 
-  Color.find({ name: dap })
+  Dap.find({ name: dap })
     .then(function (data) {
       const dapTokenIds = data.map((x) => x.tokenId);
       return res.send({ daps: dapTokenIds });
