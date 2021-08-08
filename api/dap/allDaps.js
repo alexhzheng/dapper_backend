@@ -23,6 +23,7 @@ const allDaps = async (req, res) => {
     let dap = {
       name: x.name,
       ipfsVideoHash: x.ipfsVideoHash,
+      status: x.status,
     };
     return dap;
   });
