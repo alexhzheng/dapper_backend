@@ -1,11 +1,11 @@
 /** @format */
 
-const mongoose = require('mongoose');
-const config = require('../../config/config');
+const mongoose = require("mongoose");
+const config = require("../../config/config");
 
-require('../../models/mintedDap');
+require("../../models/mintedDap");
 
-const Dap = mongoose.model('Dap');
+const Dap = mongoose.model("Dap");
 
 // sync db
 mongoose
@@ -18,10 +18,9 @@ mongoose
 
 const dapBuyer = async (req, res) => {
   if (!req.body || !req.body.dap) {
-    return res.send({ error: 'dap not provided' });
+    return res.send({ error: "dap not provided" });
   }
-
-  Dap.find({ name: dap })
+  Dap.find({ name: req.body.dap })
     .then(function (data) {
       const dapTokenIds = data.map((x) => x.tokenId);
       return res.send({ daps: dapTokenIds });
