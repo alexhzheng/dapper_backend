@@ -4971,12 +4971,12 @@
     "80001": {
       "events": {},
       "links": {},
-      "address": "0x17fca739D292327f31B700a8ED0A445B76559B12",
-      "transactionHash": "0x02482f7fa84ddb15b5237a286db9bc4b95deb53700fe96ee51e484c480dc0e13"
+      "address": "0x8B6Ad06C44b1df5f72B3A4890B2D3bb9D5381B55",
+      "transactionHash": "0x74bcf861ff6f5887664f12eb497c0ece66f54756ff2b330f5cf9d014d33f033b"
     }
   },
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-08-15T05:48:05.139Z",
+  "updatedAt": "2021-08-15T05:51:11.293Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
