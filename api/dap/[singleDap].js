@@ -14,13 +14,13 @@ mongoose
   .catch((err) => console.log(err.reason));
 
 const singleDap = async (req, res) => {
-  if (!req.query.dap) {
+  if (!req.query.singleDap) {
     return res.send({ error: "Could not get token hash" });
   }
-  const videoImageHash = req.query.dap;
-  console.log(videoImageHash);
+  const ipfsVideoHash = req.query.singleDap;
+  console.log(ipfsVideoHash);
 
-  const dap = await Dap.findOne({ videoImageHash });
+  const dap = await Dap.findOne({ ipfsVideoHash });
   if (!dap) {
     return res.send({ error: "Could not fetch dap for token id" });
   }
