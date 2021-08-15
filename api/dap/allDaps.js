@@ -24,6 +24,7 @@ const allDaps = async (req, res) => {
       name: x.name,
       ipfsVideoHash: x.ipfsVideoHash,
       status: x.status,
+      tokenId: x.tokenId,
     };
     return dap;
   });
