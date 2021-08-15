@@ -15,20 +15,17 @@ mongoose
   .catch((err) => console.log(err.reason));
 
 const minter = async (req, res) => {
-  if (!req.body || !req.body.minter) {
+  if (!req.body || !req.body.id) {
     return res.send({ error: "dap not provided" });
   }
-  const minterAddress = req.body.minter;
-  const dap = await Dap.findOne({ minterAddress });
-  if (!dap) {
-    return res.send({ error: "Could not fetch dap for token id" });
-  }
-  console.log("Fetched dap with name: " + dap.name);
-
-  const dapId = {
-    tokenId: dap.tokenId,
-  };
-  return res.send({ dap: dapId });
+  Dap.find({ tokenId: req.body.id })
+    .then(function (data) {
+      const dapMinter = data.map((x) => x.minterAddress);
+      return res.send({ daps: dapMinter });
+    })
+    .catch(function (err) {
+      return res.send({ error: err.message });
+    });
 };
 
 module.exports = minter;
