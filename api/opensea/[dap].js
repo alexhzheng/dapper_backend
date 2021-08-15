@@ -29,9 +29,9 @@ const dapGenerator = async (req, res) => {
   console.log("Fetched dap with name: " + dap.name);
 
   //   const colorName = 'Pantone 19-3952 Surf The Web';
-  const dapVideo = "https://cloudflare-ipfs.com/ipfs/" + dap.ipfsImageHash;
+  const dapVideo = "https://cloudflare-ipfs.com/ipfs/" + dap.ipfsVideoHash;
   const dapJson = {
-    external_url: "http://localhost:3000/dap/" + dap.ipfsImageHash,
+    external_url: "http://localhost:3000/dap/" + dap.ipfsVideoHash,
     image: dapVideo,
     name: dap.name,
   };
